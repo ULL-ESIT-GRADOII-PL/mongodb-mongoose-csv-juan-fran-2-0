@@ -22,7 +22,7 @@
   * All properties except for `url` are optional. 
   * A default can be set for any option with `$.ajaxSetup()`.
 
-This is a shorthand Ajax function, which is equivalent to:
+This is a shorthand Ajax function, which is equivalente to:
 
 ```javascript
 $.ajax({
