@@ -23,10 +23,12 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('tests', function(done) {
-  return karma.start({
-    configFile: __dirname + '/karma.conf.js',
-    singleRun: true
-  }, done);
+    karma.start({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, function() {
+        done();
+    });
 });
 
 gulp.task('default', ['tests']);
