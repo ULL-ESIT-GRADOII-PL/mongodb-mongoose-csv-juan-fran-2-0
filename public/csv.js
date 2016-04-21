@@ -25,9 +25,9 @@ const fillTable = (data) => {
 /* Volcar en la textarea de entrada 
  * #original el contenido del fichero fileName */
 const dump = (fileName) => {
-  XXXXXXXXXXXXXXX XXXXXXXX XXXXXX X
-      XXXXXXXXXXXXXXXXXXXXXXXXX
-  XXX
+  $.get(fileName, function (data) {
+      $("#original").val(data);
+  });
 };
  
 const handleFileSelect = (evt) => {
