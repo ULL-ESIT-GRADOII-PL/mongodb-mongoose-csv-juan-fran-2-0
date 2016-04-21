@@ -3,7 +3,6 @@ var gulp    = require('gulp'),
     uglify  = require('gulp-uglify');
 var del     = require('del');
 var minifyHTML = require('gulp-minify-html');
-var minifyCSS  = require('gulp-minify-css');
 var karma = require('karma').server;
 
 gulp.task('minify', function () {
