@@ -1,6 +1,6 @@
 var gulp    = require('gulp'),
     gutil   = require('gulp-util'),
-    uglify  = require('gulp-uglify'),
+    uglify  = require('gulp-uglify');
 var del     = require('del');
 var minifyHTML = require('gulp-minify-html');
 var minifyCSS  = require('gulp-minify-css');
