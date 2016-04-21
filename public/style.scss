@@ -33,7 +33,7 @@ button{
 }
 
 button:hover {
-    background-color: black; /* Green */
+    background-color: black;
 		color: $gris;
 }
 
@@ -43,13 +43,13 @@ table.center {
 	font-weight: bold;
 	color: black;
 	text-align: center;
-	margin-left: $margen;
+	margin: $margen;
 	border-radius: 15px;
 	background-color: #333B3D;
 }
 
 .output{
-	margin-left: $margen;
+	margin: $margen;
 }
 
 .output tr:nth-child(1){

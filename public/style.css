@@ -24,7 +24,6 @@ button {
 
 button:hover {
   background-color: black;
-  /* Green */
   color: #e7e7e7; }
 
 table.center {
@@ -33,12 +32,12 @@ table.center {
   font-weight: bold;
   color: black;
   text-align: center;
-  margin-left: auto auto auto 25%;
+  margin: auto auto auto 25%;
   border-radius: 15px;
   background-color: #333B3D; }
 
 .output {
-  margin-left: auto auto auto 25%; }
+  margin: auto auto auto 25%; }
 
 .output tr:nth-child(1) {
   background-color: #DBA40B !important;
