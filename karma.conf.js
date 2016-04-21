@@ -15,10 +15,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'assets/js/xregexp-all.js',
-      'assets/js/medida.js',
-      'assets/js/*.js',
-      'assets/testjs/*.js'
+      'public/js/*.js',
+      'public/testjs/*.js'
     ],
 
 
