@@ -4,6 +4,11 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+//Error aqui
+//mongoose.connect('mongodb://localhost');
 
 app.set('port', (process.env.PORT || 5000));
 
