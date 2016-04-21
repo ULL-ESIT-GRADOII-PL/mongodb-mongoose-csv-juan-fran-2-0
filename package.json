@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    "url": "git+https://github.com/alu0100502923/mongodb-mongoose-csv-juan-fran-2-0"
   },
   "keywords": [
     "csv"
