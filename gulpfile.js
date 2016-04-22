@@ -1,10 +1,7 @@
 var gulp    = require('gulp'),
-    gutil   = require('gulp-util'),
-    uglify  = require('gulp-uglify'),
-    concat  = require('gulp-concat');
+    uglify  = require('gulp-uglify');
 var del     = require('del');
 var minifyHTML = require('gulp-minify-html');
-var minifyCSS  = require('gulp-minify-css');
 var karma = require('karma').server;
 
 gulp.task('minify', function () {
@@ -26,10 +23,12 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('tests', function(done) {
-  return karma.start({
-    configFile: __dirname + '/karma.conf.js',
-    singleRun: true
-  }, done);
+    karma.start({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, function() {
+        done();
+    });
 });
 
 gulp.task('default', ['tests']);

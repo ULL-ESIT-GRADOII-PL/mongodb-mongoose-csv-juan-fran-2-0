@@ -25,23 +25,23 @@ const fillTable = (data) => {
 /* Volcar en la textarea de entrada 
  * #original el contenido del fichero fileName */
 const dump = (fileName) => {
-  XXXXXXXXXXXXXXX XXXXXXXX XXXXXX X
-      XXXXXXXXXXXXXXXXXXXXXXXXX
-  XXX
+  $.get(fileName, function (data) {
+      $("#original").val(data);
+  });
 };
  
 const handleFileSelect = (evt) => {
   evt.stopPropagation();
   evt.preventDefault();
 
- XXX XXXXX X XXXXXXXXXXXXXXXXX 
+  var files = evt.target.files;
 
-  XXX XXXXXX X XXX XXXXXXXXXXXXX
-  XXXXXXXXXXXXX X XXX XX X
-  
-    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  XX
-  XXXXXXXXXXXXXXXXXXXXXXXXXXX
+  var reader = new FileReader();
+  reader.onload = (e) => {
+
+     $("#original").val(e.target.result);
+  };
+  reader.readAsText(files[0])
 }
 
 /* Drag and drop: el fichero arrastrado se vuelca en la textarea de entrada */
@@ -49,15 +49,15 @@ const handleDragFileSelect = (evt) => {
   evt.stopPropagation();
   evt.preventDefault();
 
-  XXX XXXXX X XXXXXXXXXXXXXXXXXXXXXXX XX XXXXXXXX XXXXXXX
+  var files = evt.dataTransfer.files; // FileList object.
 
-  XXX XXXXXX X XXX XXXXXXXXXXXXX
-  XXXXXXXXXXXXX X XXX XX X
-  
-    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    XXXXXXXXXXXXXXXXXXXXXXXXXXX X XXXXXXXX
-  XX
-  XXXXXXXXXXXXXXXXXXXXXXXXXXX
+  var reader = new FileReader();
+  reader.onload = (e) => {
+
+        $("#original").val(e.target.result);
+        evt.target.style.background = "white";
+  };
+  reader.readAsText(files[0])
 }
 
 const handleDragOver = (evt) => {
@@ -73,18 +73,41 @@ $(document).ready(() => {
     }
 
     /* Request AJAX para que se calcule la tabla */
-    XXXXXXXXXXXXXXXXXX XX XX X
-        XX XXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXX X XXXXXXXXXXXXXXX
-        XXXXXXXXXXXXX 
-          X XXXXXX XXXXXXXXXXXXXX XX 
-          XXXXXXXXXX
-          XXXXXX
-        XX
-   XXX
+    $("#parse").click(() => {
+            if (window.localStorage) localStorage.original = original.value;
+            $.get("/csv", /* Request AJAX para que se calcule la tabla */ {
+                    input: original.value
+                },
+                fillTable,
+                'json'
+            );
+        });
    /* botones para rellenar el textarea */
-   XXXXXXXXXXXXXXXXXXXXXXXXX XXXXX XX X
-     XXXXXXXXXXX XX XX X XXXXXXXXXXXXXXXXXXXXXXXXXXX XXX
-   XXX
+   $('button.example').each( (_,y) => {
+     $(y).click( () => {  $.get("/findByName", {
+                        name: $(y).text()
+                    },
+                    (data) => {
+                        $("#original").val(data[0].content);
+                    });
+        });
+   });
+   
+   $.get("/find", {}, (data) => {
+            for (var i = 0; i < 4; i++) {
+                if (data[i]) {
+                    $('button.example').get(i).className = "example";
+                    $('button.example').get(i).textContent = data[i].name;
+                }
+            }
+        });
+
+  $("#guardar").click(() => {
+          if (window.localStorage) localStorage.original = original.value;
+          $.get("/mongo/" + $("#titulo").val(), {
+            content: $("#original").val()
+           });
+         });
 
     // Setup the drag and drop listeners.
     //var dropZone = document.getElementsByClassName('drop_zone')[0];

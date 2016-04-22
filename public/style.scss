@@ -1,0 +1,69 @@
+$gris   : #e7e7e7;
+$margen : auto auto auto 25%;
+$sf : sans-serif;
+$fan : fantasy;
+
+body{
+	background-color: #485357;
+}
+
+#title {
+	color:white;
+	font-family: $fan;
+}
+
+#input{
+	color: white;
+}
+
+textarea{
+	font-family: $sf;
+	border-radius: 5px;
+	padding: 8px;
+}
+
+button{
+	border-radius: 5px;
+	background-color: $gris;
+	color: black;
+	padding: 5px 10px;
+	text-align: center;
+	font-family: $sf;
+	font-size: 16px;
+}
+
+button:hover {
+    background-color: black;
+		color: $gris;
+}
+
+table.center {
+	padding: 10px 35px;
+	font-family: $fan;
+	font-weight: bold;
+	color: black;
+	text-align: center;
+	margin: $margen;
+	border-radius: 15px;
+	background-color: #333B3D;
+}
+
+.output{
+	margin: $margen;
+}
+
+.output tr:nth-child(1){
+	background-color: #DBA40B !important;
+	color: #6E5000 !important;
+}
+
+.output tr:nth-child(odd)    {
+	color: white;
+	background-color:#6E5000;
+}
+.output tr:nth-child(even)   {
+	color: white;
+	background-color:#DEA404;
+ }
+
+.error td{ background-color: red; }
